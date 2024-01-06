@@ -1,0 +1,35 @@
+<h1>Books</h1>
+  <% @books.each do |book| %>
+    <table class="teble">
+      <thead>
+        <tr>
+          <th class="header1">Title</th>
+          <th class="header2">Body</th>
+          <th class="header3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= book.body %></td>
+          <td>
+            <% link_to "Show" %>
+            <% link_to "Edit" %>
+            <% link_to "Destroy" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+
+
+<h1>新規投稿</h1>
+<%= form_with model: @book, url: '/books', method: :post do |f| %>
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+	
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+	
+  <%= f.submit '投稿' %>
+<% end %>
